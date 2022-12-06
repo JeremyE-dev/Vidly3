@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,8 +13,8 @@ namespace Vidly3.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            
-            var movie = new Movie() {Name = "Shrek!" };
+
+            var movie = new Movie() { Name = "Shrek!" };
             var customers = new List<Customer>
             {
                 new Customer {Name = "Customer1" },
@@ -26,9 +26,28 @@ namespace Vidly3.Controllers
                 Movie = movie,
                 Customers = customers
             };
-            
-            //need to change the model in teh view to accept this viewmodel
+
+            //need to change the model in the view to accept this viewmodel
             return View(viewModel);
         }
+
+
+        public ViewResult Index()
+        {
+            var movies = GetMovies();
+
+            return View(movies);
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie { Id = 1, Name = "Shrek" },
+                new Movie { Id = 2, Name = "Wall-e" }
+            };
+        }
+
+
     }
 }
