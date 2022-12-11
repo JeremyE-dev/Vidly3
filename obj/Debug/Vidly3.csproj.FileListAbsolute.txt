@@ -106,3 +106,11 @@ C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.csproj.CoreCompileInputs.cac
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.csproj.CopyComplete
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.dll
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.pdb
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.InitialModel.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.csproj.GenerateResource.cache
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddIsSubscribedToCustomer.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddMembershipType.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.PopulateMembershipTypes.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.ApplyAnnotationsToCustomerName.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddNameToMembershipType.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetNameOfMembershipTypes.resources
