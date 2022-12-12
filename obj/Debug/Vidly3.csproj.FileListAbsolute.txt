@@ -116,3 +116,6 @@ C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddNameToMembersh
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetNameOfMembershipTypes.resources
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetNameOfMembershipTypes1.resources
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetBithdateOfOneCustomer.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddMovie.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddGenre.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetMovieData.resources

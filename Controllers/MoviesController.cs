@@ -5,47 +5,45 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly3.Models;
 using Vidly3.ViewModels;
+using System.Data.Entity;
+
 
 namespace Vidly3.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies/Random
-        public ActionResult Random()
+
+        private ApplicationDbContext _context;
+
+        public MoviesController()
         {
-
-            var movie = new Movie() { Name = "Shrek!" };
-            var customers = new List<Customer>
-            {
-                new Customer {Name = "Customer1" },
-                new Customer {Name = "Customer2" }
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
-
-            //need to change the model in the view to accept this viewmodel
-            return View(viewModel);
+            _context = new ApplicationDbContext();
         }
 
 
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         public ViewResult Index()
         {
-            var movies = GetMovies();
+            //include Genre object so itis available in thew view
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movies);
         }
 
-        private IEnumerable<Movie> GetMovies()
+ 
+        public ActionResult Details(int id)
         {
-            return new List<Movie>
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
             {
-                new Movie { Id = 1, Name = "Shrek" },
-                new Movie { Id = 2, Name = "Wall-e" }
-            };
+                return HttpNotFound();
+            }
+
+            return View(movie);
         }
 
 
