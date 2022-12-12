@@ -205,9 +205,30 @@
     <Compile Include="Migrations\202212111448512_SetNameOfMembershipTypes.Designer.cs">
       <DependentUpon>202212111448512_SetNameOfMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212121234031_SetNameOfMembershipTypes1.cs" />
+    <Compile Include="Migrations\202212121234031_SetNameOfMembershipTypes1.Designer.cs">
+      <DependentUpon>202212121234031_SetNameOfMembershipTypes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212121242169_SetBithdateOfOneCustomer.cs" />
+    <Compile Include="Migrations\202212121242169_SetBithdateOfOneCustomer.Designer.cs">
+      <DependentUpon>202212121242169_SetBithdateOfOneCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212121402363_AddMovie.cs" />
+    <Compile Include="Migrations\202212121402363_AddMovie.Designer.cs">
+      <DependentUpon>202212121402363_AddMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212121403508_AddGenre.cs" />
+    <Compile Include="Migrations\202212121403508_AddGenre.Designer.cs">
+      <DependentUpon>202212121403508_AddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212121415299_SetMovieData.cs" />
+    <Compile Include="Migrations\202212121415299_SetMovieData.Designer.cs">
+      <DependentUpon>202212121415299_SetMovieData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -376,6 +397,7 @@
     <Content Include="Views\Movies\index.cshtml" />
     <Content Include="Views\Customers\index.cshtml" />
     <Content Include="Views\Customers\details.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -412,6 +434,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212111448512_SetNameOfMembershipTypes.resx">
       <DependentUpon>202212111448512_SetNameOfMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121234031_SetNameOfMembershipTypes1.resx">
+      <DependentUpon>202212121234031_SetNameOfMembershipTypes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121242169_SetBithdateOfOneCustomer.resx">
+      <DependentUpon>202212121242169_SetBithdateOfOneCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121402363_AddMovie.resx">
+      <DependentUpon>202212121402363_AddMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121403508_AddGenre.resx">
+      <DependentUpon>202212121403508_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121415299_SetMovieData.resx">
+      <DependentUpon>202212121415299_SetMovieData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
