@@ -205,6 +205,14 @@
     <Compile Include="Migrations\202212111448512_SetNameOfMembershipTypes.Designer.cs">
       <DependentUpon>202212111448512_SetNameOfMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212121234031_SetNameOfMembershipTypes1.cs" />
+    <Compile Include="Migrations\202212121234031_SetNameOfMembershipTypes1.Designer.cs">
+      <DependentUpon>202212121234031_SetNameOfMembershipTypes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212121242169_SetBithdateOfOneCustomer.cs" />
+    <Compile Include="Migrations\202212121242169_SetBithdateOfOneCustomer.Designer.cs">
+      <DependentUpon>202212121242169_SetBithdateOfOneCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -412,6 +420,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212111448512_SetNameOfMembershipTypes.resx">
       <DependentUpon>202212111448512_SetNameOfMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121234031_SetNameOfMembershipTypes1.resx">
+      <DependentUpon>202212121234031_SetNameOfMembershipTypes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212121242169_SetBithdateOfOneCustomer.resx">
+      <DependentUpon>202212121242169_SetBithdateOfOneCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

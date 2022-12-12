@@ -114,3 +114,5 @@ C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.PopulateMembershi
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.ApplyAnnotationsToCustomerName.resources
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddNameToMembershipType.resources
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetNameOfMembershipTypes.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetNameOfMembershipTypes1.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetBithdateOfOneCustomer.resources

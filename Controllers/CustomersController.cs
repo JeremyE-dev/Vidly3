@@ -40,7 +40,8 @@ namespace Vidly3.Controllers
         {
             //var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
             // query will run immediately because of call to extension method
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            //to include associated objects use this technique
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if(customer == null)
             {
