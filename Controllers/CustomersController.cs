@@ -24,7 +24,7 @@ namespace Vidly3.Controllers
             _context.Dispose();
         }
 
-        public ActionResult New()
+        public ActionResult New() // this is to poulate the form
         {
             var membershipTypes = _context.MembershipTypes.ToList();
 
@@ -33,6 +33,16 @@ namespace Vidly3.Controllers
                 MembershipTypes = membershipTypes
             };
             return View(viewModel);
+        }
+
+        [HttpPost] //attribute makes sure is can only be called with http post and not get
+        // because the model behind our view is of type NewCustomerViewModel
+        //we can use the type in the parameter and MVC framework
+        //will automatically map request data to this object - this is what we call model binding
+        // MVC framework binds the model (in this case the viewmodel) to the request data
+        public ActionResult Create(NewCustomerViewModel viewModel) //this action is called when form is posted
+        {
+            return View();
         }
         public ViewResult Index()
         {
