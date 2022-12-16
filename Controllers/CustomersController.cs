@@ -36,25 +36,27 @@ namespace Vidly3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer) //this action is called when form is posted
+        public ActionResult Save(Customer customer) //this action is called when form is posted
         {
-            //adding customer to a database
-            //1// add to dbcontext - when you add this top the context its not written to the db
-            //   its just in the memory our db context has a change tracking mechanism
-            // anytime you add an obj to it or modify or remove one ofits existing objects
-            // it will marke them as added modified or deleted
-            //
-            _context.Customers.Add(customer);
-            //to save call context.save changes
-            //at this poinht our dbcontext goes through all modified objects and 
-            //based on teh kind of modification it will generate sql statements at runtime
-            //then it will run themon eth db
-            //all these changes are wrapped in a transactions
-            //so either all chnages will be persisten together or nothing will
-            _context.SaveChanges();
-            //redirect to list of customers
+            //if this is a new customer then create it
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            } else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
+                //instead of using tryUpdateModel , which update's all properties 
+                // manually setthem instead to avoid security vulnerability
+
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
           
+            _context.SaveChanges();
+            
             return RedirectToAction("Index", "Customers");
         }
         public ViewResult Index()
