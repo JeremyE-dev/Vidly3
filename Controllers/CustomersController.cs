@@ -28,30 +28,37 @@ namespace Vidly3.Controllers
         {
             var membershipTypes = _context.MembershipTypes.ToList();
 
-            var viewModel = new NewCustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes
             };
             return View(viewModel);
         }
 
-        [HttpPost] //attribute makes sure is can only be called with http post and not get
-        // because the model behind our view is of type NewCustomerViewModel
-        //we can use the type in the parameter and MVC framework
-        //will automatically map request data to this object - this is what we call model binding
-        // MVC framework binds the model (in this case the viewmodel) to the request data
-        public ActionResult Create(NewCustomerViewModel viewModel) //this action is called when form is posted
+        [HttpPost]
+        public ActionResult Create(Customer customer) //this action is called when form is posted
         {
-            return View();
+            //adding customer to a database
+            //1// add to dbcontext - when you add this top the context its not written to the db
+            //   its just in the memory our db context has a change tracking mechanism
+            // anytime you add an obj to it or modify or remove one ofits existing objects
+            // it will marke them as added modified or deleted
+            //
+            _context.Customers.Add(customer);
+            //to save call context.save changes
+            //at this poinht our dbcontext goes through all modified objects and 
+            //based on teh kind of modification it will generate sql statements at runtime
+            //then it will run themon eth db
+            //all these changes are wrapped in a transactions
+            //so either all chnages will be persisten together or nothing will
+            _context.SaveChanges();
+            //redirect to list of customers
+
+          
+            return RedirectToAction("Index", "Customers");
         }
         public ViewResult Index()
         {
-            //var customers = GetCustomers();
-            //calling to list immediately queries db, otherwise it will 
-            //run query when iterating over it, like in the view
-            //eager loading means importing model and types with them so they can be rendered in the view
-            // need to include MemebershipType = .Include is an dextension method from System.Data.Entity
-            //so need to add using System.data.Entity
             var customers = _context.Customers.Include(c => c.MembershipType).ToList(); ;
 
             return View(customers);
@@ -59,9 +66,6 @@ namespace Vidly3.Controllers
 
         public ActionResult Details(int id)
         {
-            //var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
-            // query will run immediately because of call to extension method
-            //to include associated objects use this technique
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if(customer == null)
@@ -71,6 +75,26 @@ namespace Vidly3.Controllers
             
             return View(customer);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
+        }
+
+
 
         //private IEnumerable<Customer> GetCustomers()
         //{
