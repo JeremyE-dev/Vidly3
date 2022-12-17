@@ -119,3 +119,4 @@ C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetBithdateOfOneC
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddMovie.resources
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.AddGenre.resources
 C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.SetMovieData.resources
+C:\Users\eudal\source\repos\Vidly3\obj\Debug\Vidly3.Migrations.MovieIncludesGenre.resources
