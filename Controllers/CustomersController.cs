@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly3.Models;
 using System.Data.Entity;
+using Vidly3.ViewModels;
 
 namespace Vidly3.Controllers
 {
@@ -23,14 +24,43 @@ namespace Vidly3.Controllers
             _context.Dispose();
         }
 
+        public ActionResult New() // this is to poulate the form
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer) //this action is called when form is posted
+        {
+            //if this is a new customer then create it
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            } else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                //instead of using tryUpdateModel , which update's all properties 
+                // manually setthem instead to avoid security vulnerability
+
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
+          
+            _context.SaveChanges();
+            
+            return RedirectToAction("Index", "Customers");
+        }
         public ViewResult Index()
         {
-            //var customers = GetCustomers();
-            //calling to list immediately queries db, otherwise it will 
-            //run query when iterating over it, like in the view
-            //eager loading means importing model and types with them so they can be rendered in the view
-            // need to include MemebershipType = .Include is an dextension method from System.Data.Entity
-            //so need to add using System.data.Entity
             var customers = _context.Customers.Include(c => c.MembershipType).ToList(); ;
 
             return View(customers);
@@ -38,9 +68,6 @@ namespace Vidly3.Controllers
 
         public ActionResult Details(int id)
         {
-            //var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
-            // query will run immediately because of call to extension method
-            //to include associated objects use this technique
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if(customer == null)
@@ -50,6 +77,26 @@ namespace Vidly3.Controllers
             
             return View(customer);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
+        }
+
+
 
         //private IEnumerable<Customer> GetCustomers()
         //{
