@@ -24,7 +24,8 @@ namespace Vidly3.Models
 
             //now we can check the selected type
             // if 0 means that membership type was not selected so do not display error
-            if (customer.MembershipTypeId == 0 ||customer.MembershipTypeId == 1) //this is Pay As You go- do not care about birthdate
+            if (customer.MembershipTypeId == MembershipType.Unknown ||
+                customer.MembershipTypeId == MembershipType.PayAsYouGo) //this is Pay As You go- do not care about birthdate
             {
                 return ValidationResult.Success; //Success is a static fields on the ValidatiopnResult class
             }
