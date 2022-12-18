@@ -30,6 +30,8 @@ namespace Vidly3.Controllers
 
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(), //adding this field here initializes the cusomer object with defail values, its an int which is 1,
+                                           //since it has a value no more error message in summaryyyyyyyyyyyyyyyyy 
                 MembershipTypes = membershipTypes
             };
             return View("CustomerForm",viewModel);
