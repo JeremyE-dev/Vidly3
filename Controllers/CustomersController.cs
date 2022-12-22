@@ -43,6 +43,7 @@ namespace Vidly3.Controllers
         //based on teh data annotations applied on various properties of this customer 
         //class 
         // 
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer) //this action is called when form is posted
         {// at this point in the controller we can use model state  property to get access to
             // validation data
