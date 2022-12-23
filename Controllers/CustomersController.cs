@@ -30,14 +30,38 @@ namespace Vidly3.Controllers
 
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(), //adding this field here initializes the cusomer object with defail values, its an int which is 1,
+                                           //since it has a value no more error message in summaryyyyyyyyyyyyyyyyy 
                 MembershipTypes = membershipTypes
             };
-            return View(viewModel);
+            return View("CustomerForm",viewModel);
         }
 
         [HttpPost]
+        //when asp.net mvc populates this customer object
+        //using request data it checks to see if this object is valid
+        //based on teh data annotations applied on various properties of this customer 
+        //class 
+        // 
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer) //this action is called when form is posted
-        {
+        {// at this point in the controller we can use model state  property to get access to
+            // validation data
+
+            //if model state is not valid return the save view
+            // the view that contains the customer form
+            //otherwise we either add or update the customer 
+
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes
+                };
+                return View("CustomerForm", viewModel);
+            }
+
             //if this is a new customer then create it
             if (customer.Id == 0)
             {

@@ -21,6 +21,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/popper")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false) @*allows us to add a scripts section in our views 
+                                                   what we put here will be rendered in the page
+                                                   on pages where we need jquery validation, like the pages
+                                                   where we can reference our jquery validation bundle "jqueryval" to enable clientside validationreference *@
 </body>
 </html>

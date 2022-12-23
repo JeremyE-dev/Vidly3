@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Vidly3.Models;
 using Vidly3.ViewModels;
 using System.Data.Entity;
+using Vidly3.Migrations;
 
 
 namespace Vidly3.Controllers
@@ -65,9 +66,8 @@ namespace Vidly3.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
 
@@ -75,8 +75,19 @@ namespace Vidly3.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel(movie)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
